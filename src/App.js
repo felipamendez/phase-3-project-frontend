@@ -34,15 +34,15 @@ function App() {
   
   // console.log(userData)
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:9292/comments`)
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     setCommentsData(data)
-  //   })
-  // }, [])
+  useEffect(() => {
+    fetch(`http://localhost:9292/comments`)
+    .then(resp => resp.json())
+    .then(data => {
+      setCommentsData(data)
+    })
+  }, [])
 
-  // console.log(commentsData)
+  console.log(commentsData)
 
 
 
@@ -56,7 +56,7 @@ function App() {
               <CommentsPage />
             </Route>
             <Route path="/">
-              <UserFeed postData={postData}/>
+              <UserFeed postData={postData} commentsData={commentsData}/>
             </Route>
         </Switch>
           

@@ -1,7 +1,10 @@
-function CommentsPage({post}) {
+function CommentsPage({comment}) {
+    const {content, user} = comment
+
     return(
         <>
-        <p>hi from CommentsPage: {post}</p>
+         <p>{content}</p>
+         
         </>
     )
 }
