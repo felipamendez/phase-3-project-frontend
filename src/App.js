@@ -1,14 +1,12 @@
 // import logo from './logo.svg';
 import './App.css';
+import UserFeed from './UserFeed';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <UserFeed />
         
       </header>
     </div>
