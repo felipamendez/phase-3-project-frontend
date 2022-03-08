@@ -1,4 +1,5 @@
-import PostPage from './PostPage'
+import CommentsPage from './CommentsPage'
+import { NavLink } from "react-router-dom";
 
 function UserFeed() {
 
@@ -7,7 +8,17 @@ function UserFeed() {
 return (
     <>
     <p>hi from User Feed</p>
-    {posts.map(post =>  <PostPage post={post} />)}
+    <nav>
+          <ul>
+            <li>
+              <NavLink to="/">UserFeed</NavLink>
+            </li>
+            <li>
+                <NavLink to="/commentspage">CommentsPage</NavLink>
+            </li>
+          </ul>
+    </nav> 
+    {posts.map(post =>  <CommentsPage post={post} /> )}
     </>
 )
 }
