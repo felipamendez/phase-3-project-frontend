@@ -2,10 +2,10 @@ import CommentsPage from "./CommentsPage"
 import React, { useState } from "react";
 import Heart from "react-animated-heart";
 
-function Post ({post, commentsData}) {
+function Post ({post, commentsData, handleDeletePost}) {
     const {content, user, id} = post 
     const {username, photo_src} = user
-    const [isClick, setClick]=useState(false)
+    const [is_click, setClick]=useState(false)
     
 
 
@@ -16,23 +16,31 @@ function Post ({post, commentsData}) {
             })
               .then((r) => r.json())
               .then(() => console.log("deleted!"));
+              handleDeletePost(post.id)
+
           }
 
     function handlePatch(){
-    
+
+      setClick((is_click)=>!is_click)
+
+      const newClick = is_click
+      console.log(newClick)
+
+
             fetch(`http://localhost:9292/posts/${post.id}`, {
               method: "PATCH",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                isClick: !post.isClick,
+                is_click: newClick,
               }),
             })
               .then((r) => r.json())
               .then((updatedPost) => console.log(updatedPost));
-
-            setClick((isClick)=>!isClick)
+                
+    
 
           }
 
@@ -56,12 +64,12 @@ function Post ({post, commentsData}) {
         <div>
          <img src={photo_src} className="profile_feed_img"></img>
          <p>{username} </p>
-         <p>{content}</p>
+         <p> {content} </p>
          </div>
-         <div>
+
          <button onClick={handleDelete}>Delete Post</button>
-         <Heart isClick={isClick} onClick={() =>setClick(!isClick)}/>
-         </div>
+         <Heart isClick={is_click} onClick={handlePatch}/>
+       
          {/*hide show comments*/ }
          {singleComment}
         

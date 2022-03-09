@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function MakePost() {
+function MakePost({handleAddPost}) {
   const [content, setContent] = useState("");
   const [user_id, setUser_Id] = useState("");
   function handlePost(event) {
@@ -16,7 +16,9 @@ function MakePost() {
       const formData = {
          content: content,
          user_id: user_id,
+         is_click: false
         };
+        console.log(formData)
       fetch("http://localhost:9292/posts", {
     method: "POST",
     headers: {
@@ -24,6 +26,9 @@ function MakePost() {
     },
     body: JSON.stringify(formData),
   })
+        .then((r) => r.json())
+        .then((newPost) => handleAddPost(newPost));
+
   }
 
   return (
