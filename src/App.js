@@ -37,10 +37,6 @@ function App() {
 
 
 
-  function handleAddPost(newPost) {
-    setPostData([...postData, newPost]);
-  }
-
   // useEffect(() => {
   //   fetch(`http://localhost:9292/users`)
   //   .then(resp => resp.json())
@@ -76,6 +72,7 @@ function App() {
               <UserFeed postData={postData}
                commentsData={commentsData}
                handleDeletePost={handleDeletePost}
+               userData= {userData}
                />
             </Route>
         </Switch>

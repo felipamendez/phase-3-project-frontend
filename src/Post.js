@@ -1,12 +1,13 @@
 import CommentsPage from "./CommentsPage"
 import React, { useState } from "react";
-import Heart from "react-animated-heart";
 
-function Post ({post, commentsData, handleDeletePost}) {
+
+function Post ({post, commentsData, handleDeletePost, userData}) {
     const {content, user, id} = post 
     const {username, photo_src} = user
-    const [is_click, setClick]=useState(false)
+    const [is_click, setClick]=useState(post.is_click)
     
+  console.log("post",post)
 
 
     function handleDelete(){
@@ -22,10 +23,7 @@ function Post ({post, commentsData, handleDeletePost}) {
 
     function handlePatch(){
 
-      setClick((is_click)=>!is_click)
-
-      const newClick = is_click
-      console.log(newClick)
+         
 
 
             fetch(`http://localhost:9292/posts/${post.id}`, {
@@ -34,11 +32,11 @@ function Post ({post, commentsData, handleDeletePost}) {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                is_click: newClick,
+                is_click: !is_click,
               }),
             })
               .then((r) => r.json())
-              .then((updatedPost) => console.log(updatedPost));
+              .then((updatedPost) => setClick((is_click)=>!is_click));
                 
     
 
@@ -68,11 +66,12 @@ function Post ({post, commentsData, handleDeletePost}) {
          </div>
 
          <button onClick={handleDelete}>Delete Post</button>
-         <Heart isClick={is_click} onClick={handlePatch}/>
+         
        
          {/*hide show comments*/ }
          {singleComment}
-        
+         {is_click ? <button onClick={handlePatch} className="emoji-button active">❤️</button> : <button onClick={handlePatch} className="emoji-button">♡</button>
+        }
         </>
     )
 }
