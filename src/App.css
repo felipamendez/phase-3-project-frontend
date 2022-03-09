@@ -6,3 +6,17 @@
   width: 100px;
   text-align: center;
 }
+
+
+.emoji-button.active,
+.emoji-button.favorite:hover {
+  text-shadow: 0 0 0 red;
+  cursor: pointer;
+}
+
+
+
+.emoji-button {
+  color: transparent;
+  text-shadow: 0 0 0 gray;
+}

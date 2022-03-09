@@ -2,7 +2,7 @@ import CommentsPage from './CommentsPage'
 import { NavLink } from "react-router-dom";
 import Post from './Post'
 
-function UserFeed({postData, commentsData, handleDeletePost}) {
+function UserFeed({postData, commentsData, handleDeletePost, userData}) {
 
 
 //    console.log(postData[2])
@@ -15,6 +15,7 @@ function UserFeed({postData, commentsData, handleDeletePost}) {
         key={post.id}
          commentsData={commentsData}
          handleDeletePost={handleDeletePost}
+         userData={userData}
           />)
 
 return (
