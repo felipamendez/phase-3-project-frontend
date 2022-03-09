@@ -17,12 +17,29 @@ function App() {
   useEffect(() => {
     fetch(`http://localhost:9292/posts`)
     .then(resp => resp.json())
-    .then(data => {
-      setPostData(data)
+    .then(pdata => {
+      setPostData(pdata)
     })
   }, [])
 
   console.log(postData)
+
+
+  function handleAddPost(newPost){
+    setPostData([...postData, newPost])
+
+  }
+
+  function handleDeletePost(id){
+    const updatedPosts = postData.filter(data=>data.id!==id)
+    setPostData(updatedPosts)
+  }
+
+
+
+  function handleAddPost(newPost) {
+    setPostData([...postData, newPost]);
+  }
 
   // useEffect(() => {
   //   fetch(`http://localhost:9292/users`)
@@ -56,13 +73,16 @@ function App() {
               <CommentsPage />
             </Route>
             <Route path="/">
-              <UserFeed postData={postData} commentsData={commentsData}/>
+              <UserFeed postData={postData}
+               commentsData={commentsData}
+               handleDeletePost={handleDeletePost}
+               />
             </Route>
         </Switch>
           
       </div>
       </header>
-      <MakePost/>
+      <MakePost handleAddPost={handleAddPost}/>
     </div>
   );
 }
