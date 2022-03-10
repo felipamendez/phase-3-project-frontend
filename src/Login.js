@@ -28,7 +28,7 @@ function Login({isLogin, login}) {
     
 
   return (
-    <div>
+    <div className="login-container">
     {login.length === 2 ? `Welcome ${login[1].username}` : "Sorry Try Again" }
 
     <form onSubmit={handleSubmit}>
