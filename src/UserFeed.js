@@ -1,6 +1,6 @@
 import { NavLink, Switch, Route } from "react-router-dom";
 import Post from './Post'
-import UserPage from './UserPage';
+import UserPage from './UserPage'
 
 
 function UserFeed({postData, commentsData, handleDeletePost, userData}) {
@@ -19,6 +19,9 @@ return (
             <ul>
                 <li>
                     <NavLink to="/">UserFeed</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/login">Login</NavLink>
                 </li>
             </ul>
         </nav> 

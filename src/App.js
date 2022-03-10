@@ -71,6 +71,9 @@ function App() {
         <Switch>
             <Route exact path="/users">
             </Route>
+            <Route exact path="/login">
+             <Login isLogin={isLogin} login={login}/>
+            </Route>
             <Route exact path="/">
               <UserFeed postData={postData}
                commentsData={commentsData}
@@ -86,7 +89,7 @@ function App() {
       </div>
       </header>
 
-      <Login isLogin={isLogin} login={login}/>
+      
 
     </div>
   );

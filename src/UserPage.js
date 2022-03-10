@@ -11,7 +11,6 @@ function UserPage ({ userData }) {
     //need state setter from app.js passed in 
    
     return(
-        
         <>
             <p> {username} </p>
             <img src={photo_src} className="profile_feed_img" alt={username}></img>

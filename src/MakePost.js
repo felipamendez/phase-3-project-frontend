@@ -3,6 +3,8 @@ import React, { useState } from "react";
 function MakePost({handleAddPost, login}) {
   const [content, setContent] = useState("");
   const [user_id, setUser_Id] = useState("");
+  const [makePostIsHidden, setMakePostIsHidden] = useState(false)
+
   function handlePost(event) {
     setContent(event.target.value);
   }
@@ -33,12 +35,22 @@ function MakePost({handleAddPost, login}) {
 
   }
 
+  function handleWritePostClick() {
+    setMakePostIsHidden(makePostIsHidden => !makePostIsHidden)
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-       <input type="text" placeholder="Write your post" onChange={handlePost} value={content} />
-       <input type="text" placeholder="Write your user ID" onChange={handleID} value={user_id} />
-    <button type="submit">Submit</button>
-    </form>
+    <>
+      { makePostIsHidden ? ( 
+        <div>  
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Write your post" onChange={handlePost} value={content} />
+            <input type="text" placeholder="Write your user ID" onChange={handleID} value={user_id} />
+            <button type="submit">Submit</button>
+          </form> 
+        </div> ) : null }
+        <button onClick={handleWritePostClick}> {makePostIsHidden ? "Hide Post Field" : "Write a Post"} </button>
+    </>
   );
 }
   export default MakePost;
