@@ -6,7 +6,8 @@ import Login from './Login'
 import UserPage from './UserPage';
 import {
   Switch,
-  Route
+  Route,
+  NavLink
   } from "react-router-dom";
 
 function App() {
@@ -62,12 +63,21 @@ function App() {
 
   // console.log(commentsData)
 
+  const ravenImg = "https://previews.123rf.com/images/weasley99/weasley992004/weasley99200400274/145194991-raven-silhouette-logo-design.jpg"
+
   return (
     <div className="App">
-      <header className="App-header">       
+      <header className="App-header"> 
        <div>
-        <MakePost handleAddPost={handleAddPost}/>
-  
+       
+       <nav className="nav-container">
+                <img className="ravenImg" src={ravenImg} alt="raven"></img>
+                <MakePost handleAddPost={handleAddPost}/>
+                <button className="button">
+                    <NavLink to="/login">Login</NavLink>
+                </button>
+       </nav> 
+       
         <Switch>
             <Route exact path="/users">
             </Route>
@@ -85,9 +95,10 @@ function App() {
               <UserPage userData={userData}/>
             </Route>
         </Switch>
+       
           
       </div>
-      </header>
+      </header>  
 
       
 

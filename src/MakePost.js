@@ -49,7 +49,7 @@ function MakePost({handleAddPost, login}) {
             <button type="submit">Submit</button>
           </form> 
         </div> ) : null }
-        <button onClick={handleWritePostClick}> {makePostIsHidden ? "Hide Post Field" : "Write a Post"} </button>
+        <button className="button" onClick={handleWritePostClick}> {makePostIsHidden ? "Hide Post Field" : "Write a Post"} </button>
     </>
   );
 }

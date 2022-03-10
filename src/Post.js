@@ -46,11 +46,11 @@ function Post ({ post, commentsData, handleDeletePost }) {
     }
 
     return (
-        <div>
+        <div className="post-contianer">
       
             <div>
                 <img src={photo_src} className="profile_feed_img" alt={username}></img>
-                <p> 
+                <p className="post-username-link"> 
                     <Link to={`users/${user.id}`}>
                      {user.username} 
                     </Link>
@@ -58,13 +58,17 @@ function Post ({ post, commentsData, handleDeletePost }) {
                 <p> {content} </p>
             </div>
 
-            <button onClick={handleDelete}> Delete Post </button>
-        
-            {is_click ? <button onClick={handlePatch} className="emoji-button active"> ❤️ </button> : <button onClick={handlePatch} className="emoji-button"> ♡ </button>}
+           
+            <div className="button-container">
+              {is_click ? <button  onClick={handlePatch} className="emoji-button active"> ❤️ </button> : <button onClick={handlePatch} className="emoji-button"> ♡ </button>}
 
-            <button onClick={handleHideClick}> {isHidden ? "Hide Comments" : "Show Comments"} </button>
-            {isHidden ? (<p> {singleComment} </p>) : null}
+              <button className="button" onClick={handleHideClick}> {isHidden ? "Hide Comments" : "Show Comments"} </button>
+              
+              <button className="button" onClick={handleDelete}> Delete Post </button>
 
+              
+            </div>
+            {isHidden ? (<div className="comments-container"> {singleComment} </div>) : null}
         </div>
     )
 }

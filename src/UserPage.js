@@ -11,12 +11,15 @@ function UserPage ({ userData }) {
     //need state setter from app.js passed in 
    
     return(
-        <>
+        <div className="user-page-container">
+            <img src={photo_src} className="user-page-img" alt={username}></img>
             <p> {username} </p>
-            <img src={photo_src} className="profile_feed_img" alt={username}></img>
             <p> {bio} </p>
-            <div> {singleUserPost} </div>
-        </>
+            <div className="user-feed-containter">
+              <div className="post-contianer"> {singleUserPost} </div>
+            </div>
+
+        </div>
     )
 }
 

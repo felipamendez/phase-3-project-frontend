@@ -1,4 +1,4 @@
-import { NavLink, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Post from './Post'
 import UserPage from './UserPage'
 
@@ -14,24 +14,14 @@ function UserFeed({postData, commentsData, handleDeletePost, userData}) {
         />)
 
 return (
-    <>
-        <nav>
-            <ul>
-                <li>
-                    <NavLink to="/">UserFeed</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/login">Login</NavLink>
-                </li>
-            </ul>
-        </nav> 
+    <div className="user-feed-containter">
 
         {singlePost} 
 
         <Switch>
                 <Route path={`users/:userId`} component={UserPage} />
         </Switch>
-    </>
+    </div>
 )
 }
 

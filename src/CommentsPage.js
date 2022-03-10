@@ -4,9 +4,8 @@ function CommentsPage({comment}) {
 
     return(
         <>
-         <p>{user.username}</p>
-         <p>{content}</p>
-         
+         <p className="comments-username">{user.username}:</p>
+         <p className="comments-content">{content}</p>
         </>
     )
 }
