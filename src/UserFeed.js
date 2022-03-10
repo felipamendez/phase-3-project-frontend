@@ -1,4 +1,3 @@
-import CommentsPage from './CommentsPage'
 import { NavLink, Switch, Route } from "react-router-dom";
 import Post from './Post'
 import UserPage from './UserPage';
@@ -21,15 +20,14 @@ return (
                 <li>
                     <NavLink to="/">UserFeed</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/commentspage">CommentsPage</NavLink>
-                </li>
             </ul>
         </nav> 
+
         {singlePost} 
+
         <Switch>
                 <Route path={`users/:userId`} component={UserPage} />
-         </Switch>
+        </Switch>
     </>
 )
 }

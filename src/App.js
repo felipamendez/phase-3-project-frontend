@@ -1,14 +1,11 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import UserFeed from './UserFeed';
-import CommentsPage from './CommentsPage'
 import MakePost from './MakePost'
 import UserPage from './UserPage';
-import Post from './Post'
 import {
   Switch,
-  Route,
-  Link
+  Route
   } from "react-router-dom";
 
 function App() {
@@ -60,24 +57,14 @@ function App() {
 
   // console.log(commentsData)
 
-  // const singleUser = userData.map(user => 
-  //   <> 
-  //    <Link to={`/posts/${user.id}`}>{user[user.id + 1]}</Link>
-  //    <UserPage user = {user} />
-  //   </>)
-
   return (
     <div className="App">
       <header className="App-header">       
        <div>
-       <MakePost handleAddPost={handleAddPost}/>
+        <MakePost handleAddPost={handleAddPost}/>
   
         <Switch>
-            <Route path="/commentspage">
-              <CommentsPage />
-            </Route> 
             <Route exact path="/users">
-             {/* <Post /> idk if i need this */}
             </Route>
             <Route exact path="/">
               <UserFeed postData={postData}

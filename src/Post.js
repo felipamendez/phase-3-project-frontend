@@ -1,29 +1,15 @@
 import CommentsPage from "./CommentsPage"
 import React, { useState } from "react";
-import UserPage from './UserPage';
-import { NavLink, Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-function Post ({post, commentsData, handleDeletePost, userData}) {
-
-    // const { path } = useRouteMatch()
-
+function Post ({ post, commentsData, handleDeletePost }) {
     const {content, user, id} = post 
     const {username, photo_src} = user
-    const [is_click, setClick]=useState(post.is_click)
-    
-    console.log(userData)
-    
-    // const singleUser = userData.map(user => 
-    //     <> 
-    //      <Link to={`/users/${user.id}`}>
-    //          {user.username} 
-    //      </Link>
-    //      <UserPage user = {user} /> {/* maybe throw this in app  to pass down user data*/}
-    //     </>)
- 
+    const [is_click, setClick] = useState(post.is_click)
+    const [isHidden, setIsHidden] = useState(false)
+     
     console.log("post",post)
-
 
     function handleDelete(){
         
@@ -52,17 +38,16 @@ function Post ({post, commentsData, handleDeletePost, userData}) {
 
     let filteredComments = commentsData.filter(comment => comment.post_id == id) 
     let singleComment = filteredComments.map(comment => <CommentsPage comment={comment} key={comment.id}/>)
-    
-    //{showComments ? <CommentDetails comment={comment}/> : null }
 
-    // console.log("singleUser", singleUser) 
+    function handleHideClick() {
+        setIsHidden(isHidden => !isHidden)
+    }
 
     return (
         <div>
-             
-           
+              
             <div>
-                <img src={photo_src} className="profile_feed_img"></img>
+                <img src={photo_src} className="profile_feed_img" alt={username}></img>
                 <p> 
                     <Link to={`users/${user.id}`}>
                      {user.username} 
@@ -72,12 +57,12 @@ function Post ({post, commentsData, handleDeletePost, userData}) {
             </div>
 
             <button onClick={handleDelete}> Delete Post </button>
-
-            {/*hide show comments*/ }
         
             {is_click ? <button onClick={handlePatch} className="emoji-button active"> ❤️ </button> : <button onClick={handlePatch} className="emoji-button"> ♡ </button>}
 
-            {singleComment}
+            <button onClick={handleHideClick}> {isHidden ? "Hide Comments" : "Show Comments"} </button>
+            {isHidden ? (<p> {singleComment} </p>) : null}
+
         </div>
     )
 }
