@@ -4,10 +4,9 @@ import React, { useState } from "react";
 
 function Post ({post, commentsData, handleDeletePost, userData}) {
     const {content, user, id} = post 
-    const {username, photo_src} = user
+    const {username, photo_src} = userData
     const [is_click, setClick]=useState(post.is_click)
     
-  console.log("post",post)
 
 
     function handleDelete(){
@@ -60,8 +59,8 @@ function Post ({post, commentsData, handleDeletePost, userData}) {
     return (
         <>
         <div>
-         <img src={photo_src} className="profile_feed_img"></img>
-         <p>{username} </p>
+         <img src={user.photo_src} className="profile_feed_img"></img>
+         <p>{user.username} </p>
          <p> {content} </p>
          </div>
 

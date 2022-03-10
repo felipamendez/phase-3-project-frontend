@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import UserFeed from './UserFeed';
 import CommentsPage from './CommentsPage'
 import MakePost from './MakePost'
+import Login from './Login'
+
 import {
   Switch,
   Route
@@ -13,6 +15,7 @@ function App() {
   const [postData, setPostData] = useState([])
   const [userData, setUserData] = useState([])
   const [commentsData, setCommentsData] = useState([])
+  const [login, setLogin] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:9292/posts`)
@@ -22,30 +25,37 @@ function App() {
     })
   }, [])
 
-  console.log(postData)
+ // console.log(postData)
 
 
   function handleAddPost(newPost){
     setPostData([...postData, newPost])
-
-  }
+ }
 
   function handleDeletePost(id){
     const updatedPosts = postData.filter(data=>data.id!==id)
     setPostData(updatedPosts)
   }
 
+  function isLogin(userIntake)
+  {
+  const username1 = userData.filter(user => user.username === userIntake.username) 
+  const password1 = userData.filter(user => user.password === userIntake.password)
+  const LoginDats = password1.concat(username1)
+    setLogin(LoginDats)
+  }
+ 
 
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:9292/users`)
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     setUserData(data)
-  //   })
-  // }, [])
+   useEffect(() => {
+     fetch(`http://localhost:9292/users`)
+    .then(resp => resp.json())
+     .then(data => {
+       setUserData(data)
+     })
+   }, [])
   
-  // console.log(userData)
+   //console.log(userData)
 
   useEffect(() => {
     fetch(`http://localhost:9292/comments`)
@@ -79,7 +89,8 @@ function App() {
           
       </div>
       </header>
-      <MakePost handleAddPost={handleAddPost}/>
+      <MakePost handleAddPost={handleAddPost} login ={login}/>
+      <Login isLogin={isLogin} login ={login}/>
     </div>
   );
 }
