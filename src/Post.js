@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 
 
 function Post ({ post, commentsData, handleDeletePost }) {
+  
     const {content, user, id} = post 
     const {username, photo_src} = user
     const [is_click, setClick] = useState(post.is_click)
     const [isHidden, setIsHidden] = useState(false)
      
     console.log("post",post)
+
 
     function handleDelete(){
         
@@ -45,7 +47,7 @@ function Post ({ post, commentsData, handleDeletePost }) {
 
     return (
         <div>
-              
+      
             <div>
                 <img src={photo_src} className="profile_feed_img" alt={username}></img>
                 <p> 
