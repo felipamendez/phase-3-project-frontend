@@ -29,7 +29,7 @@ function Login({isLogin, login}) {
 
   return (
     <div className="login-container">
-    {login.length === 2 ? <h1>Welcome {login[1].username}</h1>  : <h1>Welcome to the Raven, Please login</h1> }
+    {login.length === 2 ? <h1>Welcome {login[1].username}</h1>  : <h1 className="login-welcome">Welcome to the Raven, Please login</h1> }
     {login.length === 2 ? null :
     <form onSubmit={handleSubmit}>
        <input className="textpost" type="text" placeholder="username" onChange={handleUser} value={username} />
