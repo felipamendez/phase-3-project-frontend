@@ -177,3 +177,7 @@ br {
 h1 {
   font-size: 18px;
 }
+
+.login-welcome {
+  padding: 50px;
+}
