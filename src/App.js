@@ -72,24 +72,20 @@ function App() {
        
        <nav className="nav-container">
                 <img className="ravenImg" src={ravenImg} alt="raven"></img>
-                <MakePost handleAddPost={handleAddPost}/>
-                <button className="button">
-                    <NavLink to="/login">Login</NavLink>
-                </button>
+                {login.length === 2 ? <MakePost handleAddPost={handleAddPost} login={login}/> : null}
+               
        </nav> 
-       
         <Switch>
             <Route exact path="/users">
             </Route>
-            <Route exact path="/login">
-             <Login isLogin={isLogin} login={login}/>
-            </Route>
             <Route exact path="/">
-              <UserFeed postData={postData}
+              <Login isLogin={isLogin} login={login}/>
+              {login.length === 2 ? <UserFeed postData={postData}
                commentsData={commentsData}
                handleDeletePost={handleDeletePost}
                userData={userData}
                />
+               : null }
             </Route>
             <Route exact path={`/users/:userId`} >
               <UserPage userData={userData}/>

@@ -123,3 +123,15 @@
 .login-container{
   margin-top: 100px;
 }
+
+br {
+  display: block;
+  margin: 25x 0;
+}
+
+
+.textpost
+{
+    height:15px;
+    width: 270px;
+}
