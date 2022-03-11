@@ -47,8 +47,8 @@ function MakePost({handleAddPost, login}) {
             <input type="text"
             className="textpost"
              placeholder="Write your post" onChange={handlePost} value={content} />
-            <input type="text" placeholder="Write your user ID" onChange={handleID} value={user_id} />
-            <button type="submit">Submit</button>
+            <input className="textpost" type="text" placeholder="Write your user ID" onChange={handleID} value={user_id} />
+            <button className="button" type="submit">Submit</button>
           </form> 
         </div> ) : null }
         <button className="button" onClick={handleWritePostClick}> {makePostIsHidden ? "Hide Post Field" : "Write a Post"} </button>

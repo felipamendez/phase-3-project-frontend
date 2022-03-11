@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(236, 238, 240);
+}
+
 .App {
   text-align: center;
   background-color: rgb(236, 238, 240);
@@ -16,10 +20,11 @@
   height:50px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   z-index: 1;
   height: 65px;
+
 }
 
 .ravenImg {
@@ -42,12 +47,15 @@
   text-shadow: 0 0 0 red;
   cursor: pointer;
   width: 30px;
+  background-color: white;
 }
 
 .emoji-button {
   color: transparent;
   text-shadow: 0 0 0 gray;
   width: 30px;
+  background-color: white;
+  border: 0;
 }
 
 .user-feed-containter {
@@ -57,6 +65,7 @@
     flex-direction: column; 
     gap: 20px;
     margin-top: 65px;
+    justify-content: center;
 }
 
 .post-contianer {
@@ -71,7 +80,13 @@
 .post-username-link {
   float: left;
   padding-left: 10px;
-  
+  text-decoration: none;
+  color:#50b7f7; 
+  font-size: 15px;
+}
+
+.post-username-link:hover {
+  color: rgb(247, 82, 184);
 }
 
 .button-container {
@@ -88,6 +103,9 @@
   height: 2em;
   border-radius: 1em;
   font-size: 15px;
+  box-shadow:0 0 4px 2px rgba(0,0,0,0.06);
+  border: 0;
+  background-color: white;
 }
 
 .button:hover {
@@ -100,18 +118,23 @@
   display: flex;
   border-top: thin solid rgb(143, 142, 142);
   gap: 10px;
+  padding-left: 70px;
 }
 
 .comments-username{
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .comments-content {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .user-page-container {
- margin-top: 70px;
+  margin-top: 70px;
+  width: 750px;
+  background-color: white;
+  border-radius: 1em;
+  padding: 20px;
 }
 
 .user-page-img {
@@ -130,8 +153,27 @@ br {
 }
 
 
-.textpost
-{
+.textpost {
     height:15px;
     width: 270px;
+    padding: 10px;
+    margin: 10px; 
+    border: 0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: .7em;
+    /* box-sizing: border-box; */
+}
+
+.textpost:focus {
+  background-color: rgb(250, 222, 245);
+  border-color: #000;
+  outline:none !important
+}
+
+.bold {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 18px;
 }
