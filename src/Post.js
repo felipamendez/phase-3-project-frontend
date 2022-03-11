@@ -52,7 +52,7 @@ function Post ({ post, commentsData, handleDeletePost }) {
                 <img src={photo_src} className="profile_feed_img" alt={username}></img>
                 <p className="post-username-link"> 
                     <Link to={`users/${user.id}`}>
-                     {user.username} 
+                     <div className="post-username-link">{user.username} </div>
                     </Link>
                 </p>
                 <p> {content} </p>
